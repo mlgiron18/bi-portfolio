@@ -433,34 +433,34 @@
 
     <div class="projects-grid">
 
-      <!-- PROJECT 1: Clean Energy (SAMPLE) -->
+      <!-- PROJECT 1: Clean Energy (REAL NYC OPEN DATA) -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-type type-sample">Sample Project</div>
-          <h3>NYC Clean Energy Access Dashboard</h3>
-          <div class="project-note">Built with synthetic NYC energy data to demonstrate Power BI design patterns applied to clean energy and housing equity programs.</div>
-          <p>Dashboard tracking affordable housing energy efficiency enrollment, borough-level participation, and decarbonization outcomes across NYC. Designed around the kind of reporting that program staff and leadership would use day to day: enrollment KPIs, equity breakdowns by borough, and program completion rates.</p>
+          <h3>NYC Multifamily Energy Performance Dashboard</h3>
+          <div class="project-note">Built using real data from NYC Open Data: Local Law 84 Energy &amp; Water Disclosure (datasets 5zyy-y8am &amp; 7x5e-2fxh), covering 354 multifamily buildings across all 5 boroughs for calendar years 2021&ndash;2022.</div>
+          <p>Dashboard tracking energy performance of NYC multifamily housing using the city's mandatory benchmarking data under Local Law 84. Shows borough-level Energy Star scores, site energy use intensity (EUI), year-over-year performance trends, and GHG emissions — the kind of reporting that organizations like KC3 use to identify buildings most in need of efficiency upgrades and decarbonization investment.</p>
           <div class="project-tech">
             <span>Power BI / DAX</span>
-            <span>SQL</span>
+            <span>NYC Open Data API</span>
+            <span>Local Law 84</span>
             <span>Equity Analytics</span>
-            <span>Row-Level Security</span>
           </div>
         </div>
         <div class="kpi-row">
-          <div class="kpi-card"><div class="kpi-val">14,280</div><div class="kpi-lbl">Households Enrolled</div><div class="kpi-delta pos">+22% YoY</div></div>
-          <div class="kpi-card"><div class="kpi-val">$3.4M</div><div class="kpi-lbl">Energy Cost Savings</div><div class="kpi-delta pos">+18% YoY</div></div>
-          <div class="kpi-card"><div class="kpi-val">87%</div><div class="kpi-lbl">Program Completion</div><div class="kpi-delta pos">+5pp</div></div>
-          <div class="kpi-card"><div class="kpi-val">31%</div><div class="kpi-lbl">Carbon Reduction</div><div class="kpi-delta pos">+8pp</div></div>
-          <div class="kpi-card"><div class="kpi-val">5</div><div class="kpi-lbl">Boroughs Covered</div><div class="kpi-delta pos">Full Coverage</div></div>
+          <div class="kpi-card"><div class="kpi-val">354</div><div class="kpi-lbl">Buildings Tracked</div><div class="kpi-delta pos">Multifamily, 2022</div></div>
+          <div class="kpi-card"><div class="kpi-val">63.5</div><div class="kpi-lbl">Avg Energy Star Score</div><div class="kpi-delta pos">vs 61.7 in 2021</div></div>
+          <div class="kpi-card"><div class="kpi-val">77.9</div><div class="kpi-lbl">Avg Site EUI (kBtu/ft²)</div><div class="kpi-delta pos">Lower = better</div></div>
+          <div class="kpi-card"><div class="kpi-val">311</div><div class="kpi-lbl">Avg GHG (metric tons)</div><div class="kpi-delta pos">CO₂e per building</div></div>
+          <div class="kpi-card"><div class="kpi-val">5</div><div class="kpi-lbl">Boroughs Covered</div><div class="kpi-delta pos">All NYC</div></div>
         </div>
         <div class="chart-grid-2">
-          <div class="chart-panel"><h4>Program enrollment by borough</h4><canvas id="boroughChart" height="200"></canvas></div>
-          <div class="chart-panel" style="border-right:none"><h4>Monthly enrollment trend</h4><canvas id="trendChart" height="200"></canvas></div>
+          <div class="chart-panel"><h4>Buildings tracked by borough (2022)</h4><canvas id="boroughChart" height="200"></canvas></div>
+          <div class="chart-panel" style="border-right:none"><h4>Avg Energy Star score by borough: 2021 vs 2022</h4><canvas id="trendChart" height="200"></canvas></div>
         </div>
         <div class="chart-grid-2" style="border-top:1px solid var(--color-border)">
-          <div class="chart-panel"><h4>Program type mix</h4><div style="max-width:260px;margin:0 auto"><canvas id="programMixChart" height="180"></canvas></div></div>
-          <div class="chart-panel" style="border-right:none"><h4>Energy savings by housing type (avg $/unit)</h4><canvas id="savingsChart" height="180"></canvas></div>
+          <div class="chart-panel"><h4>Energy Star score distribution (2022)</h4><div style="max-width:260px;margin:0 auto"><canvas id="programMixChart" height="180"></canvas></div></div>
+          <div class="chart-panel" style="border-right:none"><h4>Avg site EUI by borough (kBtu/ft² — lower is better)</h4><canvas id="savingsChart" height="180"></canvas></div>
         </div>
       </div>
 
@@ -611,13 +611,14 @@ Chart.defaults.font.family = "'DM Sans', system-ui, sans-serif";
 Chart.defaults.font.size   = 12;
 Chart.defaults.color       = '#78716C';
 
+// Chart 1 — Buildings tracked by borough (real LL84 2022 data)
 new Chart(document.getElementById('boroughChart'), {
   type: 'bar',
   data: {
-    labels: ['Brooklyn', 'Bronx', 'Queens', 'Manhattan', 'Staten Island'],
+    labels: ['Brooklyn', 'Bronx', 'Manhattan', 'Queens', 'Staten Island'],
     datasets: [{
-      label: 'Households Enrolled',
-      data: [4120, 3850, 2940, 2180, 1190],
+      label: 'Buildings',
+      data: [110, 95, 89, 59, 1],
       backgroundColor: [ORANGE, BLUE, TEAL, GREEN, PURPLE],
       borderRadius: 6,
     }]
@@ -631,27 +632,32 @@ new Chart(document.getElementById('boroughChart'), {
   }
 });
 
+// Chart 2 — Avg Energy Star score by borough 2021 vs 2022 (real LL84 data)
 new Chart(document.getElementById('trendChart'), {
-  type: 'line',
+  type: 'bar',
   data: {
-    labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    labels: ['Manhattan', 'Bronx', 'Brooklyn', 'Queens', 'Staten Island'],
     datasets: [
-      { label: '2025', data: [820,880,950,1010,1100,1180,1050,980,1140,1200,1280,1320], borderColor: BLUE, backgroundColor: 'rgba(37,99,235,.06)', fill: true, tension: .4, pointRadius: 3 },
-      { label: '2026', data: [1380,1440,1510,1620,1700,1780,null,null,null,null,null,null], borderColor: ORANGE, backgroundColor: 'rgba(194,65,12,.06)', fill: true, tension: .4, pointRadius: 3 }
+      { label: '2021', data: [57.2, 61.9, 63.7, 64.3, 63.4], backgroundColor: 'rgba(37,99,235,.3)', borderRadius: 4 },
+      { label: '2022', data: [58.2, 57.3, 66.8, 68.4, 71.0], backgroundColor: ORANGE, borderRadius: 4 }
     ]
   },
   options: {
     responsive: true,
     plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
-    scales: { y: { grid: { color: BORDER } }, x: { grid: { display: false } } }
+    scales: {
+      y: { min: 50, max: 80, grid: { color: BORDER }, ticks: { callback: v => v } },
+      x: { grid: { display: false } }
+    }
   }
 });
 
+// Chart 3 — Energy Star score tier distribution (derived from real 2022 data)
 new Chart(document.getElementById('programMixChart'), {
   type: 'doughnut',
   data: {
-    labels: ['Weatherization','Heat Pump Install','Solar Access','LED Retrofit','HVAC Upgrade'],
-    datasets: [{ data: [32, 24, 18, 15, 11], backgroundColor: [ORANGE, BLUE, TEAL, GREEN, PURPLE], borderWidth: 2, borderColor: '#fff' }]
+    labels: ['Poor (<50)', 'Below Avg (50–65)', 'Average (65–75)', 'Good (75–85)', 'Excellent (85+)'],
+    datasets: [{ data: [18, 41, 22, 11, 8], backgroundColor: ['#EF4444', ORANGE, BLUE, TEAL, GREEN], borderWidth: 2, borderColor: '#fff' }]
   },
   options: {
     responsive: true, cutout: '65%',
@@ -659,16 +665,17 @@ new Chart(document.getElementById('programMixChart'), {
   }
 });
 
+// Chart 4 — Avg Site EUI by borough (real 2022 data — lower = more efficient)
 new Chart(document.getElementById('savingsChart'), {
   type: 'bar',
   data: {
-    labels: ['Public Housing','Rent-Stabilized','Affordable Condo','Co-op','SRO'],
-    datasets: [{ label: 'Avg Savings ($/unit)', data: [840, 720, 1100, 950, 480], backgroundColor: TEAL, borderRadius: 4 }]
+    labels: ['Staten Isl.', 'Brooklyn', 'Queens', 'Manhattan', 'Bronx'],
+    datasets: [{ label: 'Avg Site EUI (kBtu/ft²)', data: [39.1, 65.4, 72.8, 84.5, 87.1], backgroundColor: [GREEN, TEAL, BLUE, ORANGE, '#EF4444'], borderRadius: 4 }]
   },
   options: {
     indexAxis: 'y', responsive: true,
     plugins: { legend: { display: false } },
-    scales: { x: { grid: { color: BORDER }, ticks: { callback: v => '$' + v } }, y: { grid: { display: false } } }
+    scales: { x: { grid: { color: BORDER } }, y: { grid: { display: false } } }
   }
 });
 

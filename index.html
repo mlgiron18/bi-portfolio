@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marissa Giron | BI &amp; Data Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    /* ========================================
+       DESIGN TOKENS (from ui-ux-pro-max)
+       Primitive → Semantic → Component
+       ======================================== */
+    :root {
+      /* Primitives */
+      --gray-50:  #FAFAF9;
+      --gray-100: #F5F5F4;
+      --gray-200: #E7E5E4;
+      --gray-300: #D6D3D1;
+      --gray-400: #A8A29E;
+      --gray-500: #78716C;
+      --gray-600: #57534E;
+      --gray-700: #44403C;
+      --gray-800: #292524;
+      --gray-900: #1C1917;
+
+      /* Brand: warm terracotta + deep ink */
+      --brand-50:  #FFF7ED;
+      --brand-100: #FFEDD5;
+      --brand-200: #FED7AA;
+      --brand-300: #FDBA74;
+      --brand-400: #FB923C;
+      --brand-500: #C2410C;
+      --brand-600: #9A3412;
+      --brand-700: #7C2D12;
+
+      --ink: #1C1917;
+      --ink-light: #44403C;
+      --ink-muted: #78716C;
+
+      /* Semantic */
+      --color-background: var(--gray-50);
+      --color-surface: #FFFFFF;
+      --color-surface-alt: var(--gray-100);
+      --color-foreground: var(--ink);
+      --color-muted: var(--ink-muted);
+      --color-border: var(--gray-200);
+      --color-accent: var(--brand-500);
+      --color-accent-soft: var(--brand-50);
+
+      /* Spacing (8px base) */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --space-10: 128px;
+
+      /* Radius */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+
+      /* Typography */
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --font-display: 'DM Serif Display', Georgia, serif;
+
+      --shadow-sm: 0 1px 2px rgba(28,25,23,.05);
+      --shadow-md: 0 2px 8px rgba(28,25,23,.06), 0 1px 2px rgba(28,25,23,.04);
+      --shadow-lg: 0 4px 24px rgba(28,25,23,.08), 0 2px 4px rgba(28,25,23,.04);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-background);
+      color: var(--color-foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================
+       NAV — minimal, warm
+       ======================================== */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,249,.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 var(--space-6); height: 56px;
+      max-width: 100%;
+    }
+    .nav-brand { font-family: var(--font-display); font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-links { display: flex; gap: var(--space-6); list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--color-muted);
+      font-size: .8rem; font-weight: 500; letter-spacing: .03em;
+      text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--color-accent); }
+
+    /* ========================================
+       HERO — editorial, left-aligned, breathing
+       ======================================== */
+    .hero {
+      padding: var(--space-10) var(--space-6) var(--space-9);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1.1; font-weight: 400;
+      color: var(--ink); margin-bottom: var(--space-5);
+      max-width: 700px;
+    }
+    .hero h1 em { font-style: italic; color: var(--color-accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--color-muted);
+      max-width: 520px; margin-bottom: var(--space-7);
+      line-height: 1.7;
+    }
+    .hero-details {
+      display: flex; gap: var(--space-7); flex-wrap: wrap;
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-border);
+    }
+    .hero-detail { }
+    .hero-detail .val { font-family: var(--font-display); font-size: 1.75rem; color: var(--ink); }
+    .hero-detail .lbl { font-size: .72rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+
+    .hero-tools {
+      display: flex; gap: var(--space-2); flex-wrap: wrap;
+      margin-bottom: var(--space-7);
+    }
+    .tool-tag {
+      display: inline-block; padding: var(--space-1) var(--space-3);
+      border: 1px solid var(--color-border); border-radius: 999px;
+      font-size: .78rem; font-weight: 500; color: var(--ink-light);
+    }
+
+    /* ========================================
+       SECTIONS
+       ======================================== */
+    section { padding: var(--space-9) var(--space-6); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--color-accent);
+      margin-bottom: var(--space-3);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 400; margin-bottom: var(--space-3);
+    }
+    .section-desc {
+      color: var(--color-muted); font-size: .95rem;
+      max-width: 500px; margin-bottom: var(--space-7);
+    }
+
+    /* ========================================
+       SKILLS — clean grid
+       ======================================== */
+    #skills { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-4); }
+    .skill-card {
+      background: var(--color-surface-alt);
+      border-radius: var(--radius-md); padding: var(--space-5);
+    }
+    .skill-card h4 {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--color-muted); margin-bottom: var(--space-3); font-weight: 600;
+    }
+    .skill-tag {
+      display: inline-block; background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm); padding: 3px 10px;
+      font-size: .78rem; font-weight: 500;
+      margin: 3px 3px 0 0; color: var(--ink-light);
+    }
+    .skill-tag.warm { background: var(--brand-50); border-color: var(--brand-200); color: var(--brand-600); }
+    .skill-tag.cool { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+    .skill-tag.mute { background: #ECFDF5; border-color: #A7F3D0; color: #065F46; }
+
+    /* ========================================
+       PROJECT CARDS
+       ======================================== */
+    .projects-grid { display: flex; flex-direction: column; gap: var(--space-8); }
+    .project-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .project-header { padding: var(--space-6) var(--space-6) 0; }
+    .project-type {
+      display: inline-block; padding: 3px 12px; border-radius: 999px;
+      font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      margin-bottom: var(--space-3);
+    }
+    .type-sample { background: var(--brand-50); color: var(--brand-600); }
+    .type-enterprise { background: #EFF6FF; color: #1E40AF; }
+    .type-automation { background: #ECFDF5; color: #065F46; }
+    .project-header h3 {
+      font-family: var(--font-display); font-size: 1.35rem;
+      font-weight: 400; margin-bottom: var(--space-2);
+    }
+    .project-header p { color: var(--color-muted); font-size: .88rem; max-width: 640px; line-height: 1.65; }
+    .project-note {
+      font-size: .76rem; color: var(--brand-600); font-weight: 600;
+      margin-bottom: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: var(--brand-50); border-radius: var(--radius-sm);
+      display: inline-block;
+    }
+    .project-tech { display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap; padding-bottom: var(--space-5); }
+    .project-tech span {
+      font-size: .75rem; color: var(--color-muted); font-weight: 500;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .project-tech span::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--color-accent); display: inline-block;
+    }
+
+    /* KPI row */
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--space-3); padding: var(--space-5) var(--space-6);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .kpi-card { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-4); }
+    .kpi-card .kpi-val { font-family: var(--font-display); font-size: 1.5rem; color: var(--ink); }
+    .kpi-card .kpi-lbl { font-size: .7rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+    .kpi-card .kpi-delta { font-size: .72rem; font-weight: 600; margin-top: var(--space-1); }
+    .kpi-delta.pos { color: #16A34A; }
+
+    /* chart panels */
+    .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    @media (max-width: 768px) { .chart-grid-2 { grid-template-columns: 1fr; } }
+    .chart-panel {
+      padding: var(--space-5) var(--space-6);
+      border-right: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .chart-panel:last-child { border-right: none; }
+    .chart-panel h4 {
+      font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--color-muted); margin-bottom: var(--space-4);
+    }
+
+    /* process flow */
+    .flow-wrap { padding: var(--space-5) var(--space-6); border-bottom: 1px solid var(--color-border); }
+    .flow-row { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+    .flow-step {
+      background: var(--color-surface-alt); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);
+      font-size: .78rem; font-weight: 600; text-align: center; min-width: 120px;
+    }
+    .flow-step.hl { background: #ECFDF5; border-color: #A7F3D0; color: #065F46; }
+    .flow-arrow { color: var(--color-muted); font-size: 1.1rem; }
+
+    /* data table */
+    .table-wrap { padding: var(--space-5) var(--space-6); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .data-table th {
+      text-align: left; padding: var(--space-2) var(--space-3);
+      font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--color-muted); border-bottom: 2px solid var(--color-border);
+    }
+    .data-table td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .badge {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      font-size: .68rem; font-weight: 700;
+    }
+    .badge-green { background: #ECFDF5; color: #065F46; }
+    .badge-yellow { background: #FEFCE8; color: #854D0E; }
+
+    /* ========================================
+       ABOUT — two-column, editorial
+       ======================================== */
+    #about { background: var(--color-surface); border-top: 1px solid var(--color-border); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-8); align-items: start; }
+    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p { color: var(--color-muted); font-size: .95rem; margin-bottom: var(--space-4); line-height: 1.7; }
+
+    .tl-line { display: flex; flex-direction: column; gap: var(--space-4); padding-left: var(--space-4); border-left: 2px solid var(--color-border); }
+    .tl-entry { padding-left: var(--space-4); position: relative; }
+    .tl-entry::before {
+      content: ''; position: absolute; left: calc(-1 * var(--space-4) - 5px); top: 5px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--color-accent); border: 2px solid var(--color-surface);
+    }
+    .tl-entry h5 { font-size: .85rem; font-weight: 600; color: var(--ink); }
+    .tl-entry span { font-size: .78rem; color: var(--color-muted); }
+
+    /* ========================================
+       CONTACT — warm, simple
+       ======================================== */
+    .contact-section {
+      background: var(--ink);
+      color: var(--gray-100);
+      padding: var(--space-9) var(--space-6);
+    }
+    .contact-inner { max-width: 1100px; margin: 0 auto; }
+    .contact-inner h2 {
+      font-family: var(--font-display); font-size: 2rem;
+      font-weight: 400; margin-bottom: var(--space-2);
+    }
+    .contact-inner p { color: var(--gray-400); margin-bottom: var(--space-6); font-size: .95rem; }
+    .contact-links { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+    .contact-link {
+      color: var(--brand-300); font-size: .88rem; text-decoration: none;
+      font-weight: 500; transition: color .2s;
+    }
+    .contact-link:hover { color: #fff; }
+
+    footer {
+      text-align: center; padding: var(--space-5);
+      font-size: .72rem; color: var(--color-muted);
+      border-top: 1px solid var(--color-border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Marissa Giron</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Business Intelligence + Data Analytics</div>
+  <h1>I build data systems<br />that people <em>actually use</em></h1>
+  <p class="hero-sub">Power BI dashboards, automated reporting pipelines, and data models for organizations where getting the numbers right has real consequences. Currently finishing my MS in Business Analytics &amp; AI at NYU.</p>
+  <div class="hero-tools">
+    <span class="tool-tag">Power BI</span>
+    <span class="tool-tag">DAX</span>
+    <span class="tool-tag">SQL</span>
+    <span class="tool-tag">Python</span>
+    <span class="tool-tag">Tableau</span>
+    <span class="tool-tag">Power Automate</span>
+  </div>
+  <div class="hero-details">
+    <div class="hero-detail"><div class="val">4+</div><div class="lbl">Years Experience</div></div>
+    <div class="hero-detail"><div class="val">229K+</div><div class="lbl">Records Analyzed</div></div>
+    <div class="hero-detail"><div class="val">3</div><div class="lbl">BI Platforms</div></div>
+    <div class="hero-detail"><div class="val">$200K+</div><div class="lbl">Grant Impact</div></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-eyebrow">What I work with</div>
+    <h2 class="section-title">Skills &amp; tools</h2>
+    <p class="section-desc">Data modeling, DAX, stakeholder dashboards, and automated pipelines. The full stack of BI work.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Business Intelligence</h4>
+        <span class="skill-tag warm">Power BI</span>
+        <span class="skill-tag warm">DAX</span>
+        <span class="skill-tag warm">Data Modeling</span>
+        <span class="skill-tag warm">Tableau</span>
+        <span class="skill-tag warm">Spotfire</span>
+      </div>
+      <div class="skill-card">
+        <h4>Languages</h4>
+        <span class="skill-tag cool">SQL</span>
+        <span class="skill-tag cool">Python</span>
+        <span class="skill-tag cool">R</span>
+        <span class="skill-tag cool">DAX</span>
+      </div>
+      <div class="skill-card">
+        <h4>Data platforms</h4>
+        <span class="skill-tag">BigQuery</span>
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">ETL / ELT</span>
+      </div>
+      <div class="skill-card">
+        <h4>Analytics + AI</h4>
+        <span class="skill-tag mute">Machine Learning</span>
+        <span class="skill-tag mute">Generative AI</span>
+        <span class="skill-tag mute">A/B Testing</span>
+        <span class="skill-tag mute">Statistical Analysis</span>
+      </div>
+      <div class="skill-card">
+        <h4>Automation</h4>
+        <span class="skill-tag">Power Automate</span>
+        <span class="skill-tag">Microsoft 365</span>
+        <span class="skill-tag">Reporting Pipelines</span>
+        <span class="skill-tag">Excel</span>
+      </div>
+      <div class="skill-card">
+        <h4>Design + Communication</h4>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Miro</span>
+        <span class="skill-tag">UX for Analytics</span>
+        <span class="skill-tag">Exec Storytelling</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Selected work</h2>
+    <p class="section-desc">BI work across enterprise operations, clean energy programs, and nonprofit reporting.</p>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1: Clean Energy (SAMPLE) -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-type type-sample">Sample Project</div>
+          <h3>NYC Clean Energy Access Dashboard</h3>
+          <div class="project-note">Built with synthetic NYC energy data to demonstrate Power BI design patterns applied to clean energy and housing equity programs.</div>
+          <p>Dashboard tracking affordable housing energy efficiency enrollment, borough-level participation, and decarbonization outcomes across NYC. Designed around the kind of reporting that program staff and leadership would use day to day: enrollment KPIs, equity breakdowns by borough, and program completion rates.</p>
+          <div class="project-tech">
+            <span>Power BI / DAX</span>
+            <span>SQL</span>
+            <span>Equity Analytics</span>
+            <span>Row-Level Security</span>
+          </div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-val">14,280</div><div class="kpi-lbl">Households Enrolled</div><div class="kpi-delta pos">+22% YoY</div></div>
+          <div class="kpi-card"><div class="kpi-val">$3.4M</div><div class="kpi-lbl">Energy Cost Savings</div><div class="kpi-delta pos">+18% YoY</div></div>
+          <div class="kpi-card"><div class="kpi-val">87%</div><div class="kpi-lbl">Program Completion</div><div class="kpi-delta pos">+5pp</div></div>
+          <div class="kpi-card"><div class="kpi-val">31%</div><div class="kpi-lbl">Carbon Reduction</div><div class="kpi-delta pos">+8pp</div></div>
+          <div class="kpi-card"><div class="kpi-val">5</div><div class="kpi-lbl">Boroughs Covered</div><div class="kpi-delta pos">Full Coverage</div></div>
+        </div>
+        <div class="chart-grid-2">
+          <div class="chart-panel"><h4>Program enrollment by borough</h4><canvas id="boroughChart" height="200"></canvas></div>
+          <div class="chart-panel" style="border-right:none"><h4>Monthly enrollment trend</h4><canvas id="trendChart" height="200"></canvas></div>
+        </div>
+        <div class="chart-grid-2" style="border-top:1px solid var(--color-border)">
+          <div class="chart-panel"><h4>Program type mix</h4><div style="max-width:260px;margin:0 auto"><canvas id="programMixChart" height="180"></canvas></div></div>
+          <div class="chart-panel" style="border-right:none"><h4>Energy savings by housing type (avg $/unit)</h4><canvas id="savingsChart" height="180"></canvas></div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Enterprise KPI -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-type type-enterprise">Enterprise Analytics</div>
+          <h3>Operational KPI &amp; Performance Reporting</h3>
+          <p>Power BI reporting framework built around 229K+ operational records. The dashboards tracked demand patterns, backlog drivers, and performance trends, and were used weekly by Strategy, Operations, and Leadership for planning.</p>
+          <div class="project-tech">
+            <span>Power BI + DAX</span>
+            <span>SQL Server</span>
+            <span>229K+ Records</span>
+            <span>Executive Dashboards</span>
+          </div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-val">229K+</div><div class="kpi-lbl">Records Analyzed</div><div class="kpi-delta pos">Multi-system</div></div>
+          <div class="kpi-card"><div class="kpi-val">40%</div><div class="kpi-lbl">Reporting Time Saved</div><div class="kpi-delta pos">Via Automation</div></div>
+          <div class="kpi-card"><div class="kpi-val">99.2%</div><div class="kpi-lbl">Data Accuracy Rate</div><div class="kpi-delta pos">Post-validation</div></div>
+          <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-lbl">Dashboards Built</div><div class="kpi-delta pos">Active in prod</div></div>
+        </div>
+        <div class="chart-grid-2">
+          <div class="chart-panel"><h4>KPI performance vs. target (by quarter)</h4><canvas id="kpiChart" height="200"></canvas></div>
+          <div class="chart-panel" style="border-right:none"><h4>Backlog drivers, root cause analysis</h4><canvas id="backlogChart" height="200"></canvas></div>
+        </div>
+        <div class="table-wrap" style="border-top:1px solid var(--color-border)">
+          <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">Data validation summary</h4>
+          <table class="data-table">
+            <thead><tr><th>Data Domain</th><th>Records</th><th>Issues</th><th>Resolution</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Order Management</td><td>84,320</td><td>142</td><td>99.8%</td><td><span class="badge badge-green">Validated</span></td></tr>
+              <tr><td>Demand Planning</td><td>61,440</td><td>87</td><td>99.9%</td><td><span class="badge badge-green">Validated</span></td></tr>
+              <tr><td>Backlog &amp; Fulfillment</td><td>49,200</td><td>214</td><td>98.6%</td><td><span class="badge badge-yellow">Monitoring</span></td></tr>
+              <tr><td>Performance Metrics</td><td>34,500</td><td>31</td><td>99.9%</td><td><span class="badge badge-green">Validated</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Automation -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-type type-automation">Automation + Governance</div>
+          <h3>Reporting Automation &amp; Data Governance Pipeline</h3>
+          <p>Took a manual weekly reporting process that was slow and error-prone and rebuilt it as an automated SQL + Power BI pipeline. Added row-level security, standardized naming conventions, and a reconciliation framework. Report turnaround went from 2 days to under 2 hours.</p>
+          <div class="project-tech">
+            <span>Power Automate</span>
+            <span>SQL</span>
+            <span>Data Governance</span>
+            <span>Row-Level Security</span>
+          </div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-val">-90%</div><div class="kpi-lbl">Manual Report Hours</div><div class="kpi-delta pos">2 days to 2 hrs</div></div>
+          <div class="kpi-card"><div class="kpi-val">100%</div><div class="kpi-lbl">Stakeholder Adoption</div><div class="kpi-delta pos">Across 3 teams</div></div>
+          <div class="kpi-card"><div class="kpi-val">6</div><div class="kpi-lbl">Reports Automated</div><div class="kpi-delta pos">Weekly cadence</div></div>
+          <div class="kpi-card"><div class="kpi-val">RLS</div><div class="kpi-lbl">Security Implemented</div><div class="kpi-delta pos">Row-level</div></div>
+        </div>
+        <div class="flow-wrap">
+          <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">Reporting pipeline architecture</h4>
+          <div class="flow-row">
+            <div class="flow-step">Source Systems<br/><small style="font-weight:400;color:var(--color-muted)">SQL Server / Excel</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">SQL Validation<br/><small style="font-weight:400">Reconciliation</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Power BI Model<br/><small style="font-weight:400">DAX + RLS</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Power Automate<br/><small style="font-weight:400">Scheduled Refresh</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Dashboards<br/><small style="font-weight:400">Leadership + Ops</small></div>
+          </div>
+        </div>
+        <div class="chart-grid-2">
+          <div class="chart-panel"><h4>Reporting hours before vs. after</h4><canvas id="autoChart" height="200"></canvas></div>
+          <div class="chart-panel" style="border-right:none"><h4>Data governance maturity</h4><canvas id="govChart" height="200"></canvas></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow">Background</div>
+        <h2 class="section-title">About me</h2>
+        <p>I've spent the last few years building BI systems at places like Thermo Fisher Scientific, where the dashboards actually had to work or people stopped using them. Before that I did grant forecasting and reporting at a community nonprofit.</p>
+        <p>I'm finishing my MS in Business Analytics &amp; AI at NYU, where I've been going deeper on machine learning, generative AI, and working with large datasets. The work I keep gravitating toward is at organizations where the data connects back to something real: clean energy access, housing equity, climate programs.</p>
+        <p>Based in New York. Open to NYC and remote work.</p>
+      </div>
+      <div>
+        <div class="tl-line">
+          <div class="tl-entry">
+            <h5>Data Analyst II, Thermo Fisher Scientific</h5>
+            <span>May 2023 &ndash; Present</span>
+          </div>
+          <div class="tl-entry">
+            <h5>MS Business Analytics &amp; AI, NYU</h5>
+            <span>Expected May 2026</span>
+          </div>
+          <div class="tl-entry">
+            <h5>Data Coordinator, PerkinElmer</h5>
+            <span>Sept 2022 &ndash; Apr 2023</span>
+          </div>
+          <div class="tl-entry">
+            <h5>Systems &amp; Dev Associate, New Earth Org</h5>
+            <span>Aug 2021 &ndash; Jun 2022</span>
+          </div>
+          <div class="tl-entry">
+            <h5>UX/UI Design Certificate, UC Berkeley Extension</h5>
+            <span>Figma, Miro, UX Research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <h2>Get in touch</h2>
+    <p>Open to BI and data analytics roles, especially in clean energy, housing, and equity.</p>
+    <div class="contact-links">
+      <a href="mailto:mlgiron18@gmail.com" class="contact-link">mlgiron18@gmail.com</a>
+      <a href="https://github.com/mlgiron18" class="contact-link" target="_blank">github.com/mlgiron18</a>
+      <a href="tel:3234817112" class="contact-link">(323) 481-7112</a>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; 2026 Marissa Giron</footer>
+
+<script>
+const GREEN  = '#16A34A';
+const BLUE   = '#2563EB';
+const ORANGE = '#C2410C';
+const PURPLE = '#7C3AED';
+const TEAL   = '#0D9488';
+const MUTED  = '#A8A29E';
+const BORDER = '#E7E5E4';
+
+Chart.defaults.font.family = "'DM Sans', system-ui, sans-serif";
+Chart.defaults.font.size   = 12;
+Chart.defaults.color       = '#78716C';
+
+new Chart(document.getElementById('boroughChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Brooklyn', 'Bronx', 'Queens', 'Manhattan', 'Staten Island'],
+    datasets: [{
+      label: 'Households Enrolled',
+      data: [4120, 3850, 2940, 2180, 1190],
+      backgroundColor: [ORANGE, BLUE, TEAL, GREEN, PURPLE],
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, plugins: { legend: { display: false } },
+    scales: {
+      y: { grid: { color: BORDER }, ticks: { callback: v => v.toLocaleString() } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    datasets: [
+      { label: '2025', data: [820,880,950,1010,1100,1180,1050,980,1140,1200,1280,1320], borderColor: BLUE, backgroundColor: 'rgba(37,99,235,.06)', fill: true, tension: .4, pointRadius: 3 },
+      { label: '2026', data: [1380,1440,1510,1620,1700,1780,null,null,null,null,null,null], borderColor: ORANGE, backgroundColor: 'rgba(194,65,12,.06)', fill: true, tension: .4, pointRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
+    scales: { y: { grid: { color: BORDER } }, x: { grid: { display: false } } }
+  }
+});
+
+new Chart(document.getElementById('programMixChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Weatherization','Heat Pump Install','Solar Access','LED Retrofit','HVAC Upgrade'],
+    datasets: [{ data: [32, 24, 18, 15, 11], backgroundColor: [ORANGE, BLUE, TEAL, GREEN, PURPLE], borderWidth: 2, borderColor: '#fff' }]
+  },
+  options: {
+    responsive: true, cutout: '65%',
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10, font: { size: 11 } } } }
+  }
+});
+
+new Chart(document.getElementById('savingsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Public Housing','Rent-Stabilized','Affordable Condo','Co-op','SRO'],
+    datasets: [{ label: 'Avg Savings ($/unit)', data: [840, 720, 1100, 950, 480], backgroundColor: TEAL, borderRadius: 4 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { x: { grid: { color: BORDER }, ticks: { callback: v => '$' + v } }, y: { grid: { display: false } } }
+  }
+});
+
+new Chart(document.getElementById('kpiChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1 2025','Q2 2025','Q3 2025','Q4 2025','Q1 2026'],
+    datasets: [
+      { label: 'Actual', data: [88, 91, 94, 97, 99], backgroundColor: ORANGE, borderRadius: 4 },
+      { label: 'Target', data: [90, 90, 93, 95, 98], backgroundColor: BORDER, borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
+    scales: { y: { min: 80, max: 102, grid: { color: BORDER }, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } }
+  }
+});
+
+new Chart(document.getElementById('backlogChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Supply Constraint','Demand Spike','Data Entry Lag','Sys Integration','Other'],
+    datasets: [{ label: 'Backlog Impact (%)', data: [38, 27, 18, 12, 5], backgroundColor: [ORANGE, BLUE, TEAL, PURPLE, MUTED], borderRadius: 4 }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false } },
+    scales: { x: { grid: { color: BORDER }, ticks: { callback: v => v + '%' } }, y: { grid: { display: false } } }
+  }
+});
+
+new Chart(document.getElementById('autoChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Weekly KPI','Exec Dashboard','Ops Summary','Demand Forecast','Validation Run','Ad-hoc'],
+    datasets: [
+      { label: 'Before (hrs)', data: [8, 12, 6, 10, 14, 5], backgroundColor: '#FECACA', borderRadius: 4 },
+      { label: 'After (hrs)',  data: [0.5, 1, 0.5, 0.75, 1, 0.5], backgroundColor: GREEN, borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
+    scales: { y: { grid: { color: BORDER }, ticks: { callback: v => v + 'h' } }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } }
+  }
+});
+
+new Chart(document.getElementById('govChart'), {
+  type: 'radar',
+  data: {
+    labels: ['Data Quality','Documentation','Security (RLS)','Standardization','Automation','Stakeholder Trust'],
+    datasets: [
+      { label: 'Before', data: [40, 30, 20, 35, 10, 45], borderColor: '#FECACA', backgroundColor: 'rgba(254,202,202,.15)', pointBackgroundColor: '#FECACA' },
+      { label: 'After',  data: [95, 88, 90, 92, 95, 94], borderColor: GREEN, backgroundColor: 'rgba(22,163,74,.1)', pointBackgroundColor: GREEN }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, font: { size: 10 } }, grid: { color: BORDER }, pointLabels: { font: { size: 11 } } } },
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } }
+  }
+});
+</script>
+</body>
+</html>

@@ -364,7 +364,7 @@
     <span class="tool-tag">Power Automate</span>
   </div>
   <div class="hero-details">
-    <div class="hero-detail"><div class="val">4+</div><div class="lbl">Years Experience</div></div>
+    <div class="hero-detail"><div class="val">5+</div><div class="lbl">Years Experience</div></div>
     <div class="hero-detail"><div class="val">229K+</div><div class="lbl">Records Analyzed</div></div>
     <div class="hero-detail"><div class="val">3</div><div class="lbl">BI Platforms</div></div>
     <div class="hero-detail"><div class="val">$200K+</div><div class="lbl">Grant Impact</div></div>
@@ -489,15 +489,16 @@
           </div>
         </div>
         <div class="kpi-row">
-          <div class="kpi-card"><div class="kpi-val">229K+</div><div class="kpi-lbl">Records Analyzed</div><div class="kpi-delta pos">Multi-system</div></div>
-          <div class="kpi-card"><div class="kpi-val">40%</div><div class="kpi-lbl">Reporting Time Saved</div><div class="kpi-delta pos">Via Automation</div></div>
-          <div class="kpi-card"><div class="kpi-val">99.2%</div><div class="kpi-lbl">Data Accuracy Rate</div><div class="kpi-delta pos">Post-validation</div></div>
-          <div class="kpi-card"><div class="kpi-val">12</div><div class="kpi-lbl">Dashboards Built</div><div class="kpi-delta pos">Active in prod</div></div>
+          <div class="kpi-card"><div class="kpi-val">229K+</div><div class="kpi-lbl">Assets Analyzed</div><div class="kpi-delta pos">Across 6 sites</div></div>
+          <div class="kpi-card"><div class="kpi-val">82%</div><div class="kpi-lbl">Overdue Work Orders Cut</div><div class="kpi-delta pos">Duplicate + invalid records found</div></div>
+          <div class="kpi-card"><div class="kpi-val">3 yrs</div><div class="kpi-lbl">History Modeled</div><div class="kpi-delta pos">Repair spend + service density</div></div>
+          <div class="kpi-card"><div class="kpi-val">UAT</div><div class="kpi-lbl">Pipeline Validated</div><div class="kpi-delta pos">DEV, QA, PROD</div></div>
         </div>
         <div class="chart-grid-2">
           <div class="chart-panel"><h4>KPI performance vs. target (by quarter)</h4><canvas id="kpiChart" height="200"></canvas></div>
           <div class="chart-panel" style="border-right:none"><h4>Backlog drivers, root cause analysis</h4><canvas id="backlogChart" height="200"></canvas></div>
         </div>
+        <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) var(--space-6) var(--space-4);font-style:italic;line-height:1.5">Charts show representative shapes only. The underlying client data is confidential, so the values here are illustrative. The metrics above are from the actual engagement.</div>
       </div>
 
       <!-- PROJECT 3: Automation -->
@@ -505,7 +506,7 @@
         <div class="project-header">
           <div class="project-type type-automation">Automation + Governance</div>
           <h3>Reporting Automation &amp; Data Governance Pipeline</h3>
-          <p>The weekly reporting process was slow, manual, and broke constantly. I rebuilt it as an automated SQL + Power BI pipeline, added row-level security, standardized the naming conventions, and put a reconciliation framework in place. Turnaround went from 2 days to under 2 hours.</p>
+          <p>The monthly reporting process was slow, manual, and broke constantly. I rebuilt it as an automated SQL + Power BI pipeline, added row-level security, standardized the naming conventions, and put a reconciliation framework in place. A cycle that took a program manager 2.5 days now refreshes daily on its own.</p>
           <div class="project-tech">
             <span>Power Automate</span>
             <span>SQL</span>
@@ -514,9 +515,9 @@
           </div>
         </div>
         <div class="kpi-row">
-          <div class="kpi-card"><div class="kpi-val">-90%</div><div class="kpi-lbl">Manual Report Hours</div><div class="kpi-delta pos">2 days to 2 hrs</div></div>
-          <div class="kpi-card"><div class="kpi-val">100%</div><div class="kpi-lbl">Stakeholder Adoption</div><div class="kpi-delta pos">Across 3 teams</div></div>
-          <div class="kpi-card"><div class="kpi-val">6</div><div class="kpi-lbl">Reports Automated</div><div class="kpi-delta pos">Weekly cadence</div></div>
+          <div class="kpi-card"><div class="kpi-val">2.5 days</div><div class="kpi-lbl">Manual Cycle Replaced</div><div class="kpi-delta pos">Now refreshes daily</div></div>
+          <div class="kpi-card"><div class="kpi-val">84%</div><div class="kpi-lbl">Location Match Coverage</div><div class="kpi-delta pos">Up from 12% after join rebuild</div></div>
+          <div class="kpi-card"><div class="kpi-val">972 &rarr; 171</div><div class="kpi-lbl">Records Missing A Category</div><div class="kpi-delta pos">Via ranked cleanup worklists</div></div>
           <div class="kpi-card"><div class="kpi-val">RLS</div><div class="kpi-lbl">Security Implemented</div><div class="kpi-delta pos">Row-level</div></div>
         </div>
         <div class="flow-wrap">
@@ -537,6 +538,7 @@
           <div class="chart-panel"><h4>Reporting hours before vs. after</h4><canvas id="autoChart" height="200"></canvas></div>
           <div class="chart-panel" style="border-right:none"><h4>Data governance maturity</h4><canvas id="govChart" height="200"></canvas></div>
         </div>
+        <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) var(--space-6) var(--space-4);font-style:italic;line-height:1.5">Charts show representative shapes only. The underlying client data is confidential, so the values here are illustrative. The metrics above are from the actual engagement.</div>
       </div>
 
       <!-- PROJECT 4: DriftBreaker -->
@@ -546,13 +548,14 @@
           <h3>DriftBreaker: ML Loan Portfolio Screening</h3>
           <div class="project-note">NYU Stern capstone, built as a team. Live as a working product at <a href="https://driftbreaker.ai" target="_blank" style="color:var(--brand-600);text-decoration:none;font-weight:700">driftbreaker.ai</a>.</div>
           <p>Consumer loan portfolios quietly get riskier over time, as borrower behavior drifts away from the patterns a model first learned. DriftBreaker screens a portfolio for that drift, flags the segments where risk is climbing, and gives lenders an early read on where losses are likely to surface before they hit the books.</p>
-          <p>Built in Python with pandas and scikit-learn. My formal workstream was descriptive analytics: profiling the loan data, mapping distributions and data quality, and building the descriptive foundation the risk models were scored against. I also contributed across the wider project, from framing the problem to shipping the final deliverable.</p>
+          <p>Built in Python on 2.9 million LendingClub loans, reshaped into a 20.7 million row loan-quarter panel. I owned the descriptive workstream, profiling how loan quality deteriorated after 2015. That was the analysis that established whether screening was worth doing at all, and it set the baseline the risk models were scored against. I worked across the rest of the project too, contributing to data engineering, feature work, modeling, and validation.</p>
           <div class="project-tech">
             <span>Machine Learning</span>
             <span>Python</span>
             <span>pandas</span>
             <span>scikit-learn</span>
-            <span>Descriptive Analytics</span>
+            <span>XGBoost</span>
+            <span>Walk-Forward Validation</span>
             <span>Data Drift Detection</span>
             <span>Risk Analytics</span>
           </div>
@@ -560,14 +563,15 @@
         <div class="flow-wrap">
           <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">How DriftBreaker works</h4>
           <div class="flow-row">
-            <div class="flow-step hl">Data Profiling &amp; EDA<br/><small style="font-weight:400">My workstream</small></div>
+            <div class="flow-step hl">Profiling &amp; Deterioration Analysis<br/><small style="font-weight:400">Built the case for screening</small></div>
             <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step">Feature Drift Detection<br/><small style="font-weight:400;color:var(--color-muted)">vs. training baseline</small></div>
+            <div class="flow-step hl">Feature Drift Detection<br/><small style="font-weight:400">vs. training baseline</small></div>
             <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step">Risk Scoring Model<br/><small style="font-weight:400;color:var(--color-muted)">scikit-learn</small></div>
+            <div class="flow-step hl">Risk Scoring Model<br/><small style="font-weight:400">Walk-forward validation</small></div>
             <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step">Portfolio Screening<br/><small style="font-weight:400;color:var(--color-muted)">Flagged segments</small></div>
+            <div class="flow-step hl">Portfolio Screening<br/><small style="font-weight:400">Flagged segments</small></div>
           </div>
+          <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) 0 0;font-style:italic;line-height:1.5">Team project. I owned the descriptive workstream at the front of this pipeline and contributed to data engineering, feature work, modeling, and validation across the rest.</div>
         </div>
       </div>
 
@@ -582,7 +586,7 @@
       <div class="about-text">
         <div class="section-eyebrow">Background</div>
         <h2 class="section-title">About me</h2>
-        <p>I now build BI systems end-to-end at a clean-energy consultancy: SQL warehouse, ETL pipelines, and Power BI dashboards, built from scratch. Before that, five years of enterprise BI at Thermo Fisher and PerkinElmer, where the dashboards had to actually work or people stopped using them.</p>
+        <p>I now build BI systems end-to-end at a clean-energy consultancy: SQL warehouse, ETL pipelines, and Power BI dashboards, built from scratch. Before that, nearly four years of enterprise BI at Thermo Fisher and PerkinElmer, where the dashboards had to actually work or people stopped using them.</p>
         <p>I recently finished my MS in Business Analytics &amp; AI at NYU (machine learning, generative AI, large-scale data systems). The background in philosophy is real and it shows up in how I frame problems before I touch a dataset.</p>
         <p>Drawn to organizations where the data connects back to real people: clean energy, housing, life sciences, community programs. Based in Los Angeles. Open to hybrid and remote.</p>
       </div>

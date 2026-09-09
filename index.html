@@ -408,13 +408,13 @@
         <span class="skill-tag">scikit-learn</span>
         <span class="skill-tag">R</span>
         <span class="skill-tag">Machine Learning</span>
-        <span class="skill-tag">Predictive Modeling</span>
+        <span class="skill-tag">Predictive Modeling</span> <span class="skill-tag">XGBoost</span> <span class="skill-tag">Logistic Regression</span> <span class="skill-tag">Feature Engineering</span> <span class="skill-tag">Walk-Forward Validation</span> <span class="skill-tag">Bootstrap &amp; Permutation Testing</span> <span class="skill-tag">Anomaly Detection</span>
       </div>
       <div class="skill-card">
         <h4>Analytics + AI</h4>
         <span class="skill-tag mute">Generative AI</span>
         <span class="skill-tag mute">Statistical Analysis</span>
-        <span class="skill-tag mute">A/B Testing</span>
+        <span class="skill-tag mute">A/B Testing</span> <span class="skill-tag">Causal Inference</span> <span class="skill-tag">Model Evaluation</span>
       </div>
       <div class="skill-card">
         <h4>Automation &amp; AI Agents</h4>
@@ -440,11 +440,45 @@
   <div class="container">
     <div class="section-eyebrow">Portfolio</div>
     <h2 class="section-title">Selected work</h2>
-    <p class="section-desc">Work across enterprise operations, clean energy programs, and nonprofit data.</p>
+    <p class="section-desc">Machine learning and model validation first, then the BI systems and pipelines underneath: enterprise operations, clean energy programs, and nonprofit data.</p>
 
     <div class="projects-grid">
 
-      <!-- PROJECT 1: Clean Energy (REAL NYC OPEN DATA) -->
+      <!-- PROJECT 1: DriftBreaker (ML capstone) -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-type type-sample">ML Capstone</div>
+          <h3>DriftBreaker: ML Loan Portfolio Screening</h3>
+          <div class="project-note">NYU Stern capstone, built as a team. Live as a working product at <a href="https://driftbreaker.ai" target="_blank" style="color:var(--brand-600);text-decoration:none;font-weight:700">driftbreaker.ai</a>.</div>
+          <p>Consumer loan portfolios quietly get riskier over time, as borrower behavior drifts away from the patterns a model first learned. DriftBreaker screens a portfolio for that drift, flags the segments where risk is climbing, and gives lenders an early read on where losses are likely to surface before they hit the books.</p>
+          <p>Built in Python on 2.9 million LendingClub loans, reshaped into a 20.7 million row loan-quarter panel. I owned the descriptive workstream, profiling how loan quality deteriorated after 2015. That was the analysis that established whether screening was worth doing at all, and it set the baseline the risk models were scored against. I worked across the rest of the project too, contributing to data engineering, feature work, modeling, and validation.</p>
+          <div class="project-tech">
+            <span>Machine Learning</span>
+            <span>Python</span>
+            <span>pandas</span>
+            <span>scikit-learn</span>
+            <span>XGBoost</span>
+            <span>Walk-Forward Validation</span>
+            <span>Data Drift Detection</span>
+            <span>Risk Analytics</span>
+          </div>
+        </div>
+        <div class="flow-wrap">
+          <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">How DriftBreaker works</h4>
+          <div class="flow-row">
+            <div class="flow-step hl">Profiling &amp; Deterioration Analysis<br/><small style="font-weight:400">Built the case for screening</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Feature Drift Detection<br/><small style="font-weight:400">vs. training baseline</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Risk Scoring Model<br/><small style="font-weight:400">Walk-forward validation</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Portfolio Screening<br/><small style="font-weight:400">Flagged segments</small></div>
+          </div>
+          <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) 0 0;font-style:italic;line-height:1.5">Team project. I owned the descriptive workstream at the front of this pipeline and contributed to data engineering, feature work, modeling, and validation across the rest.</div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Clean Energy (REAL NYC OPEN DATA) -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-type type-sample">Sample Project</div>
@@ -475,7 +509,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 2: Enterprise KPI -->
+      <!-- PROJECT 3: Enterprise KPI -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-type type-enterprise">Enterprise Analytics</div>
@@ -501,7 +535,7 @@
         <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) var(--space-6) var(--space-4);font-style:italic;line-height:1.5">Charts show representative shapes only. The underlying client data is confidential, so the values here are illustrative. The metrics above are from the actual engagement.</div>
       </div>
 
-      <!-- PROJECT 3: Automation -->
+      <!-- PROJECT 4: Automation -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-type type-automation">Automation + Governance</div>
@@ -539,40 +573,6 @@
           <div class="chart-panel" style="border-right:none"><h4>Data governance maturity</h4><canvas id="govChart" height="200"></canvas></div>
         </div>
         <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) var(--space-6) var(--space-4);font-style:italic;line-height:1.5">Charts show representative shapes only. The underlying client data is confidential, so the values here are illustrative. The metrics above are from the actual engagement.</div>
-      </div>
-
-      <!-- PROJECT 4: DriftBreaker -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-type type-sample">ML Capstone</div>
-          <h3>DriftBreaker: ML Loan Portfolio Screening</h3>
-          <div class="project-note">NYU Stern capstone, built as a team. Live as a working product at <a href="https://driftbreaker.ai" target="_blank" style="color:var(--brand-600);text-decoration:none;font-weight:700">driftbreaker.ai</a>.</div>
-          <p>Consumer loan portfolios quietly get riskier over time, as borrower behavior drifts away from the patterns a model first learned. DriftBreaker screens a portfolio for that drift, flags the segments where risk is climbing, and gives lenders an early read on where losses are likely to surface before they hit the books.</p>
-          <p>Built in Python on 2.9 million LendingClub loans, reshaped into a 20.7 million row loan-quarter panel. I owned the descriptive workstream, profiling how loan quality deteriorated after 2015. That was the analysis that established whether screening was worth doing at all, and it set the baseline the risk models were scored against. I worked across the rest of the project too, contributing to data engineering, feature work, modeling, and validation.</p>
-          <div class="project-tech">
-            <span>Machine Learning</span>
-            <span>Python</span>
-            <span>pandas</span>
-            <span>scikit-learn</span>
-            <span>XGBoost</span>
-            <span>Walk-Forward Validation</span>
-            <span>Data Drift Detection</span>
-            <span>Risk Analytics</span>
-          </div>
-        </div>
-        <div class="flow-wrap">
-          <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">How DriftBreaker works</h4>
-          <div class="flow-row">
-            <div class="flow-step hl">Profiling &amp; Deterioration Analysis<br/><small style="font-weight:400">Built the case for screening</small></div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step hl">Feature Drift Detection<br/><small style="font-weight:400">vs. training baseline</small></div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step hl">Risk Scoring Model<br/><small style="font-weight:400">Walk-forward validation</small></div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-step hl">Portfolio Screening<br/><small style="font-weight:400">Flagged segments</small></div>
-          </div>
-          <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) 0 0;font-style:italic;line-height:1.5">Team project. I owned the descriptive workstream at the front of this pipeline and contributed to data engineering, feature work, modeling, and validation across the rest.</div>
-        </div>
       </div>
 
     </div>

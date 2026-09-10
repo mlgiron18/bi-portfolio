@@ -365,9 +365,9 @@
   </div>
   <div class="hero-details">
     <div class="hero-detail"><div class="val">5+</div><div class="lbl">Years Experience</div></div>
-    <div class="hero-detail"><div class="val">229K+</div><div class="lbl">Records Analyzed</div></div>
-    <div class="hero-detail"><div class="val">3</div><div class="lbl">BI Platforms</div></div>
-    <div class="hero-detail"><div class="val">$200K+</div><div class="lbl">Grant Impact</div></div>
+    <div class="hero-detail"><div class="val">229K+</div><div class="lbl">Assets Analyzed</div></div>
+    <div class="hero-detail"><div class="val">12,000+</div><div class="lbl">NYC Buildings Tracked</div></div>
+    <div class="hero-detail"><div class="val">2.9M</div><div class="lbl">Loans Modeled</div></div>
   </div>
 </section>
 
@@ -396,7 +396,6 @@
         <span class="skill-tag cool">SQL Server</span>
         <span class="skill-tag cool">Stored Procedures</span>
         <span class="skill-tag cool">ETL Pipelines</span>
-        <span class="skill-tag cool">Data Modeling</span>
         <span class="skill-tag cool">Staging &amp; Reference Schemas</span>
         <span class="skill-tag cool">Layered Views</span>
       </div>
@@ -425,11 +424,12 @@
         <span class="skill-tag">Reporting Pipelines</span>
       </div>
       <div class="skill-card">
-        <h4>Design + Communication</h4>
+        <h4>Design &amp; Languages</h4>
         <span class="skill-tag">Figma</span>
         <span class="skill-tag">Miro</span>
-        <span class="skill-tag">UX for Analytics</span>
-        <span class="skill-tag">Exec Storytelling</span>
+        <span class="skill-tag">UX / UI Design</span>
+        <span class="skill-tag mute">English (Native)</span>
+        <span class="skill-tag mute">Spanish (Fluent)</span>
       </div>
     </div>
   </div>
@@ -440,7 +440,7 @@
   <div class="container">
     <div class="section-eyebrow">Portfolio</div>
     <h2 class="section-title">Selected work</h2>
-    <p class="section-desc">Machine learning and model validation first, then the BI systems and pipelines underneath: enterprise operations, clean energy programs, and nonprofit data.</p>
+    <p class="section-desc">Machine learning and model validation first, then the production BI systems underneath: clean energy compliance, enterprise operations, and the pipelines that feed them.</p>
 
     <div class="projects-grid">
 
@@ -478,68 +478,50 @@
         </div>
       </div>
 
-      <!-- PROJECT 2: Clean Energy (REAL NYC OPEN DATA) -->
+      <!-- PROJECT 2: LL97 Emissions Dashboard (KC3) -->
       <div class="project-card">
         <div class="project-header">
-          <div class="project-type type-sample">Sample Project</div>
-          <h3>NYC Multifamily Energy Performance Dashboard</h3>
-          <div class="project-note">Real data from NYC Open Data, Local Law 84 Energy &amp; Water Disclosure (datasets 5zyy-y8am and 7x5e-2fxh). Covers 354 multifamily buildings across all 5 boroughs for calendar years 2021 and 2022.</div>
-          <p>Built on NYC's mandatory Local Law 84 benchmarking data for multifamily housing. Shows borough-level Energy Star scores, site EUI, year-over-year trends, and GHG emissions. The kind of data you need to figure out which buildings should be first in line for efficiency upgrades and decarbonization work.</p>
-          <div class="project-tech">
-            <span>Power BI / DAX</span>
-            <span>NYC Open Data API</span>
-            <span>Local Law 84</span>
-            <span>Equity Analytics</span>
-          </div>
-        </div>
-        <div class="kpi-row">
-          <div class="kpi-card"><div class="kpi-val">354</div><div class="kpi-lbl">Buildings Tracked</div><div class="kpi-delta pos">Multifamily, 2022</div></div>
-          <div class="kpi-card"><div class="kpi-val">63.5</div><div class="kpi-lbl">Avg Energy Star Score</div><div class="kpi-delta pos">vs 61.7 in 2021</div></div>
-          <div class="kpi-card"><div class="kpi-val">77.9</div><div class="kpi-lbl">Avg Site EUI (kBtu/ft²)</div><div class="kpi-delta pos">Lower = better</div></div>
-          <div class="kpi-card"><div class="kpi-val">311</div><div class="kpi-lbl">Avg GHG (metric tons)</div><div class="kpi-delta pos">CO₂e per building</div></div>
-          <div class="kpi-card"><div class="kpi-val">5</div><div class="kpi-lbl">Boroughs Covered</div><div class="kpi-delta pos">All NYC</div></div>
-        </div>
-        <div class="chart-grid-2">
-          <div class="chart-panel"><h4>Buildings tracked by borough (2022)</h4><canvas id="boroughChart" height="200"></canvas></div>
-          <div class="chart-panel" style="border-right:none"><h4>Avg Energy Star score by borough: 2021 vs 2022</h4><canvas id="trendChart" height="200"></canvas></div>
-        </div>
-        <div class="chart-grid-2" style="border-top:1px solid var(--color-border)">
-          <div class="chart-panel"><h4>Energy Star score distribution (2022)</h4><div style="max-width:260px;margin:0 auto"><canvas id="programMixChart" height="180"></canvas></div></div>
-          <div class="chart-panel" style="border-right:none"><h4>Avg site EUI by borough (kBtu/ft², lower is better)</h4><canvas id="savingsChart" height="180"></canvas></div>
-        </div>
-      </div>
-
-      <!-- PROJECT 3: Enterprise KPI -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-type type-enterprise">Enterprise Analytics</div>
-          <h3>Operational KPI &amp; Performance Reporting</h3>
-          <p>Power BI reporting framework built around 229K+ operational records. Tracked demand patterns, backlog drivers, and performance trends. The dashboards got pulled up in weekly planning meetings by Strategy, Operations, and Leadership.</p>
+          <div class="project-type type-automation">Clean Energy Compliance</div>
+          <h3>NYC Accelerator LL97 Emissions Dashboard</h3>
+          <div style="font-size:.75rem;color:var(--color-muted);margin:-2px 0 var(--space-3)">Kinetic Communities Consulting, 2026</div>
+          <p>New York City's Local Law 97 caps building emissions and fines owners who exceed them. KC3 runs compliance programs helping buildings get under the cap. I built the dashboard the program runs on: which buildings are covered, how much they emit, what they would owe, and what it would take to get them under the line.</p>
+          <p>Six pages on a star-schema model over SQL views, tracking a 120,000 tCO2e reduction target across a 12,174-building target universe. Sources are all public: the DOB Covered Buildings List parsed out of five borough PDFs, roughly 103,000 rows of LL84 benchmarking data, and two HPD datasets totaling close to a million registration and contact records. Row-level security keeps each program manager in their own contract.</p>
           <div class="project-tech">
             <span>Power BI + DAX</span>
-            <span>SQL Server</span>
-            <span>229K+ Records</span>
-            <span>Executive Dashboards</span>
+            <span>Azure SQL / T-SQL</span>
+            <span>Star Schema</span>
+            <span>Power Automate</span>
+            <span>NYC Open Data API</span>
+            <span>Row-Level Security</span>
           </div>
         </div>
         <div class="kpi-row">
-          <div class="kpi-card"><div class="kpi-val">229K+</div><div class="kpi-lbl">Assets Analyzed</div><div class="kpi-delta pos">Across 6 sites</div></div>
-          <div class="kpi-card"><div class="kpi-val">82%</div><div class="kpi-lbl">Overdue Work Orders Cut</div><div class="kpi-delta pos">Duplicate + invalid records found</div></div>
-          <div class="kpi-card"><div class="kpi-val">3 yrs</div><div class="kpi-lbl">History Modeled</div><div class="kpi-delta pos">Repair spend + service density</div></div>
-          <div class="kpi-card"><div class="kpi-val">UAT</div><div class="kpi-lbl">Pipeline Validated</div><div class="kpi-delta pos">DEV, QA, PROD</div></div>
+          <div class="kpi-card"><div class="kpi-val">12,174</div><div class="kpi-lbl">Buildings In Scope</div><div class="kpi-delta pos">Parsed from 5 borough PDFs</div></div>
+          <div class="kpi-card"><div class="kpi-val">120K</div><div class="kpi-lbl">tCO2e Reduction Target</div><div class="kpi-delta pos">Tracked against actuals</div></div>
+          <div class="kpi-card"><div class="kpi-val">~1M</div><div class="kpi-lbl">Records Integrated</div><div class="kpi-delta pos">HPD registration + contacts</div></div>
+          <div class="kpi-card"><div class="kpi-val">~90%</div><div class="kpi-lbl">Emissions Data Coverage</div><div class="kpi-delta pos">Across the target universe</div></div>
         </div>
-        <div class="chart-grid-2">
-          <div class="chart-panel"><h4>KPI performance vs. target (by quarter)</h4><canvas id="kpiChart" height="200"></canvas></div>
-          <div class="chart-panel" style="border-right:none"><h4>Backlog drivers, root cause analysis</h4><canvas id="backlogChart" height="200"></canvas></div>
+        <div class="flow-wrap">
+          <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">What I built</h4>
+          <div class="flow-row">
+            <div class="flow-step hl">Paginated API Extract<br/><small style="font-weight:400">Power Automate do-until loops</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Staging &amp; Reference Schema<br/><small style="font-weight:400">OPENJSON, TRY_CONVERT, idempotent loads</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Layered SQL Views<br/><small style="font-weight:400">Grain managed to stop double-counting</small></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step hl">Power BI Star Schema<br/><small style="font-weight:400">Fine exposure + scenario planner</small></div>
+          </div>
+          <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) 0 0;font-style:italic;line-height:1.5">Also wrote a scalar UDF to normalize and dedupe management-company names, then a rollup ranking firms by buildings controlled, which turned messy free text into an outreach priority list.</div>
         </div>
-        <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) var(--space-6) var(--space-4);font-style:italic;line-height:1.5">Charts show representative shapes only. The underlying client data is confidential, so the values here are illustrative. The metrics above are from the actual engagement.</div>
       </div>
 
-      <!-- PROJECT 4: Automation -->
+      <!-- PROJECT 3: Automation + Governance (KC3) -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-type type-automation">Automation + Governance</div>
           <h3>Reporting Automation &amp; Data Governance Pipeline</h3>
+          <div style="font-size:.75rem;color:var(--color-muted);margin:-2px 0 var(--space-3)">Kinetic Communities Consulting, 2026</div>
           <p>The monthly reporting process was slow, manual, and broke constantly. I rebuilt it as an automated SQL + Power BI pipeline, added row-level security, standardized the naming conventions, and put a reconciliation framework in place. A cycle that took a program manager 2.5 days now refreshes daily on its own.</p>
           <div class="project-tech">
             <span>Power Automate</span>
@@ -568,11 +550,59 @@
             <div class="flow-step hl">Dashboards<br/><small style="font-weight:400">Leadership + Ops</small></div>
           </div>
         </div>
-        <div class="chart-grid-2">
-          <div class="chart-panel"><h4>Reporting hours before vs. after</h4><canvas id="autoChart" height="200"></canvas></div>
-          <div class="chart-panel" style="border-right:none"><h4>Data governance maturity</h4><canvas id="govChart" height="200"></canvas></div>
+      </div>
+
+      <!-- PROJECT 4: Enterprise KPI (Thermo Fisher) -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-type type-enterprise">Enterprise Analytics</div>
+          <h3>Operational KPI &amp; Performance Reporting</h3>
+          <div style="font-size:.75rem;color:var(--color-muted);margin:-2px 0 var(--space-3)">Thermo Fisher Scientific, 2023 to 2026</div>
+          <p>Power BI reporting framework built around 229K+ operational records. Tracked demand patterns, backlog drivers, and performance trends. The dashboards got pulled up in weekly planning meetings by Strategy, Operations, and Leadership.</p>
+          <div class="project-tech">
+            <span>Power BI + DAX</span>
+            <span>SQL Server</span>
+            <span>229K+ Records</span>
+            <span>Executive Dashboards</span>
+          </div>
         </div>
-        <div style="font-size:.72rem;color:var(--color-muted);padding:var(--space-4) var(--space-6) var(--space-4);font-style:italic;line-height:1.5">Charts show representative shapes only. The underlying client data is confidential, so the values here are illustrative. The metrics above are from the actual engagement.</div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-val">229K+</div><div class="kpi-lbl">Assets Analyzed</div><div class="kpi-delta pos">Across 6 sites</div></div>
+          <div class="kpi-card"><div class="kpi-val">82%</div><div class="kpi-lbl">Overdue Work Orders Cut</div><div class="kpi-delta pos">Duplicate + invalid records found</div></div>
+          <div class="kpi-card"><div class="kpi-val">3 yrs</div><div class="kpi-lbl">History Modeled</div><div class="kpi-delta pos">Repair spend + service density</div></div>
+          <div class="kpi-card"><div class="kpi-val">UAT</div><div class="kpi-lbl">Pipeline Validated</div><div class="kpi-delta pos">DEV, QA, PROD</div></div>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: Clean Energy sample (REAL NYC OPEN DATA) -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-type type-sample">Sample Project</div>
+          <h3>NYC Multifamily Energy Performance Dashboard</h3>
+          <div class="project-note">Real data from NYC Open Data, Local Law 84 Energy &amp; Water Disclosure (datasets 5zyy-y8am and 7x5e-2fxh). Covers 354 multifamily buildings across all 5 boroughs for calendar years 2021 and 2022.</div>
+          <p>Built on NYC's mandatory Local Law 84 benchmarking data for multifamily housing. Shows borough-level Energy Star scores, site EUI, year-over-year trends, and GHG emissions. The kind of data you need to figure out which buildings should be first in line for efficiency upgrades and decarbonization work.</p>
+          <div class="project-tech">
+            <span>Power BI / DAX</span>
+            <span>NYC Open Data API</span>
+            <span>Local Law 84</span>
+            <span>Equity Analytics</span>
+          </div>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-val">354</div><div class="kpi-lbl">Buildings Tracked</div><div class="kpi-delta pos">Multifamily, 2022</div></div>
+          <div class="kpi-card"><div class="kpi-val">63.5</div><div class="kpi-lbl">Avg Energy Star Score</div><div class="kpi-delta pos">vs 61.7 in 2021</div></div>
+          <div class="kpi-card"><div class="kpi-val">77.9</div><div class="kpi-lbl">Avg Site EUI (kBtu/ft²)</div><div class="kpi-delta pos">Lower = better</div></div>
+          <div class="kpi-card"><div class="kpi-val">311</div><div class="kpi-lbl">Avg GHG (metric tons)</div><div class="kpi-delta pos">CO₂e per building</div></div>
+          <div class="kpi-card"><div class="kpi-val">5</div><div class="kpi-lbl">Boroughs Covered</div><div class="kpi-delta pos">All NYC</div></div>
+        </div>
+        <div class="chart-grid-2">
+          <div class="chart-panel"><h4>Buildings tracked by borough (2022)</h4><canvas id="boroughChart" height="200"></canvas></div>
+          <div class="chart-panel" style="border-right:none"><h4>Avg Energy Star score by borough: 2021 vs 2022</h4><canvas id="trendChart" height="200"></canvas></div>
+        </div>
+        <div class="chart-grid-2" style="border-top:1px solid var(--color-border)">
+          <div class="chart-panel"><h4>Energy Star score distribution (2022)</h4><div style="max-width:260px;margin:0 auto"><canvas id="programMixChart" height="180"></canvas></div></div>
+          <div class="chart-panel" style="border-right:none"><h4>Avg site EUI by borough (kBtu/ft², lower is better)</h4><canvas id="savingsChart" height="180"></canvas></div>
+        </div>
       </div>
 
     </div>
@@ -719,66 +749,9 @@ new Chart(document.getElementById('savingsChart'), {
   }
 });
 
-new Chart(document.getElementById('kpiChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Q1 2025','Q2 2025','Q3 2025','Q4 2025','Q1 2026'],
-    datasets: [
-      { label: 'Actual', data: [88, 91, 94, 97, 99], backgroundColor: ORANGE, borderRadius: 4 },
-      { label: 'Target', data: [90, 90, 93, 95, 98], backgroundColor: BORDER, borderRadius: 4 }
-    ]
-  },
-  options: {
-    responsive: true,
-    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
-    scales: { y: { min: 80, max: 102, grid: { color: BORDER }, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } }
-  }
-});
 
-new Chart(document.getElementById('backlogChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Supply Constraint','Demand Spike','Data Entry Lag','Sys Integration','Other'],
-    datasets: [{ label: 'Backlog Impact (%)', data: [38, 27, 18, 12, 5], backgroundColor: [ORANGE, BLUE, TEAL, PURPLE, MUTED], borderRadius: 4 }]
-  },
-  options: {
-    indexAxis: 'y', responsive: true,
-    plugins: { legend: { display: false } },
-    scales: { x: { grid: { color: BORDER }, ticks: { callback: v => v + '%' } }, y: { grid: { display: false } } }
-  }
-});
 
-new Chart(document.getElementById('autoChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Weekly KPI','Exec Dashboard','Ops Summary','Demand Forecast','Validation Run','Ad-hoc'],
-    datasets: [
-      { label: 'Before (hrs)', data: [8, 12, 6, 10, 14, 5], backgroundColor: '#FECACA', borderRadius: 4 },
-      { label: 'After (hrs)',  data: [0.5, 1, 0.5, 0.75, 1, 0.5], backgroundColor: GREEN, borderRadius: 4 }
-    ]
-  },
-  options: {
-    responsive: true,
-    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
-    scales: { y: { grid: { color: BORDER }, ticks: { callback: v => v + 'h' } }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } }
-  }
-});
 
-new Chart(document.getElementById('govChart'), {
-  type: 'radar',
-  data: {
-    labels: ['Data Quality','Documentation','Security (RLS)','Standardization','Automation','Stakeholder Trust'],
-    datasets: [
-      { label: 'Before', data: [40, 30, 20, 35, 10, 45], borderColor: '#FECACA', backgroundColor: 'rgba(254,202,202,.15)', pointBackgroundColor: '#FECACA' },
-      { label: 'After',  data: [95, 88, 90, 92, 95, 94], borderColor: GREEN, backgroundColor: 'rgba(22,163,74,.1)', pointBackgroundColor: GREEN }
-    ]
-  },
-  options: {
-    responsive: true,
-    scales: { r: { min: 0, max: 100, ticks: { stepSize: 25, font: { size: 10 } }, grid: { color: BORDER }, pointLabels: { font: { size: 11 } } } },
-    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } }
-  }
-});
 </script>
 </body>
 </html>

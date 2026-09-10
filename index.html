@@ -478,14 +478,13 @@
         </div>
       </div>
 
-      <!-- PROJECT 2: LL97 Emissions Dashboard (KC3) -->
+      <!-- PROJECT 2: LL97 Emissions Dashboard -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-type type-automation">Clean Energy Compliance</div>
-          <h3>NYC Accelerator LL97 Emissions Dashboard</h3>
-          <div style="font-size:.75rem;color:var(--color-muted);margin:-2px 0 var(--space-3)">Kinetic Communities Consulting, 2026</div>
-          <p>New York City's Local Law 97 caps building emissions and fines owners who exceed them. KC3 runs compliance programs helping buildings get under the cap. I built the dashboard the program runs on: which buildings are covered, how much they emit, what they would owe, and what it would take to get them under the line.</p>
-          <p>Six pages on a star-schema model over SQL views, tracking a 120,000 tCO2e reduction target across a 12,174-building target universe. Sources are all public: the DOB Covered Buildings List parsed out of five borough PDFs, roughly 103,000 rows of LL84 benchmarking data, and two HPD datasets totaling close to a million registration and contact records. Row-level security keeps each program manager in their own contract.</p>
+          <h3>Local Law 97 Emissions Compliance Dashboard</h3>
+          <p>New York City's Local Law 97 caps building emissions and fines owners who exceed them. I built the compliance dashboard behind that work: which buildings are covered, how much they emit, what they would owe, and what it would take to get them under the line.</p>
+          <p>Six pages on a star-schema model over SQL views, covering a 12,174-building target universe. Every source is public: the DOB Covered Buildings List parsed out of five borough PDFs, roughly 103,000 rows of LL84 benchmarking data, and two HPD datasets totaling close to a million registration and contact records. Row-level security keeps each program manager in their own contract.</p>
           <div class="project-tech">
             <span>Power BI + DAX</span>
             <span>Azure SQL / T-SQL</span>
@@ -497,9 +496,9 @@
         </div>
         <div class="kpi-row">
           <div class="kpi-card"><div class="kpi-val">12,174</div><div class="kpi-lbl">Buildings In Scope</div><div class="kpi-delta pos">Parsed from 5 borough PDFs</div></div>
-          <div class="kpi-card"><div class="kpi-val">120K</div><div class="kpi-lbl">tCO2e Reduction Target</div><div class="kpi-delta pos">Tracked against actuals</div></div>
-          <div class="kpi-card"><div class="kpi-val">~1M</div><div class="kpi-lbl">Records Integrated</div><div class="kpi-delta pos">HPD registration + contacts</div></div>
-          <div class="kpi-card"><div class="kpi-val">~90%</div><div class="kpi-lbl">Emissions Data Coverage</div><div class="kpi-delta pos">Across the target universe</div></div>
+          <div class="kpi-card"><div class="kpi-val">~103K</div><div class="kpi-lbl">LL84 Rows Integrated</div><div class="kpi-delta pos">Public benchmarking data</div></div>
+          <div class="kpi-card"><div class="kpi-val">~1M</div><div class="kpi-lbl">HPD Records Joined</div><div class="kpi-delta pos">Registration + contacts</div></div>
+          <div class="kpi-card"><div class="kpi-val">6</div><div class="kpi-lbl">Dashboard Pages</div><div class="kpi-delta pos">Star schema over SQL views</div></div>
         </div>
         <div class="flow-wrap">
           <h4 style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--color-muted);margin-bottom:var(--space-4)">What I built</h4>
